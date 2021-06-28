@@ -1,0 +1,137 @@
+\documentclass[12pt, letterpaper, twoside]{article}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}%codification of the document
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{tikz}
+\usetikzlibrary{shapes,shadows,arrows}
+\usepackage[nottoc]{tocbibind}
+
+\title{Methodology of OSINT tools and their usage in Cyber Threat Intelligence.}
+\author{Georgii Moiseev }
+\date{start date: April 20th, 2021\\ end date: May 15th, 2021.}
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+
+\newpage
+
+
+
+\section{\large Plagiarism statement}
+I confirm that all statements, words, ideas and paragraphs that I am going to write in my project/article were the state of my own mind. The work on that project is my own work and I didn't copy it, unless I used the books, articles, lecture notes, documents and other academic materials, then I put quotation marks and give a credit to the author and make a reference on his/her intellectual  property. I didn't cheat by taking the work from the author of its work and declaring that it is mine.\\
+\vspace{1mm}
+ I affirm that I don't violate copyrights and avoid various kinds of plagiarism:
+\begin{itemize}
+    \item Global plagiarism: using someone's work and declaring that this work is mine own.
+    \item Paraphrasing plagiarism: rephrasing someone's else ideas without reference on source.
+    \item Verbatim plagiarism: copying text without citation on that source.
+    \item  Mosaic plagiarism: combining the mix of idea and compiling in one own work.
+    \item Self-plagiarism: reusing your own work from previous work that were done.
+    \item  Incorrect citation.
+    \item Fake citation.
+\end{itemize}
+
+\newpage
+\section{\large Abstract}
+\begin{abstract}
+It is known that there exist a great deal of cyber observables, which are shared and spread the information about known threats that happened lately. They are known and there is a chance they may occur again, but it doesn't give the real idea to predict. We can only read the articles or reports about accidents and after, decide what potential threat may be. Besides that, we should know \textit{\textbf{attack surface}} and \textit{\textbf{attack vector}}\cite{ballmer-scribbr}. So in this project, I provide research articles and practical usage of Open-source intelligence for finding vulnerabilities. I have a report of some common methods and tools used for causing potential cyber threats. Also, I want to show the methodology of tools. Moreover, all collected, analyzed and summarized information provided with knowledge of Cyber Threat Intelligence could help, potentially, for trying to reach the goal of developing and training an AI model. This model would create the opportunity to foresee the future cyber threats scenarios.
+\end{abstract}
+
+\newpage
+
+\maketitle
+
+\tableofcontents
+
+
+\newpage
+\section{\large Main body Page:}
+{\large Introduction:}\\\\
+My goal is writing about the most commonly used OSINT tools for cyber intelligence threats and making my own report about the frequency of utilization. I want to demonstrate the abilities of those tools and their potential usage, when those tools should be used, for what purposes and what commands I used. Besides that, I am going to write about the methodology of other tools, but touch following topic slightly. Moreover, usage of OSINT is a very important topic because it covers \textit{attack surface}. The first tool that I am going to use is \textit{nmap}. Besides that in project, I can provide a detailed report and how the tool can be used and in which cases. Other tools most likely will be used are \textit{Metagoofil}, \textit{nikto} and explain why social media might be dangerous in terms of privacy and safety aspects.  
+
+\newpage
+\large{OSINT methodology}\cite{SentinelOne}:\newline
+\includegraphics[scale = 0.5]{ osint-fw.jpg} 
+
+\newpage
+
+\subsection{Nmap}
+Nmap is open-source for scanning a computer network and used specifically for discovering hosts and services on a computer network.\cite{SentinelOne}\\
+This useful tool can help to define availability of specific host, services of those hosts, Operating system and even firewall details.\cite{VARONIS}\\
+Nmap often used for scanning of vulnerabilities\cite{DATAINSIDER} and asset management.
+For example, if take a look at the details about my IP address and related hosts, by typing 192.168.1.1 for my private IP address through router, we are getting the following result:
+\vspace{5mm}
+
+\includegraphics[scale = 0.75]{1.png}\break
+
+My input was \textbf{nmap -v -A -sV 192.168.1.1} in which -v used for verbosity, -A which allows you to define OS, version, trace route and -sV is checking for open ports. 
+So, while we are using \textit{nmap} we can define what physical devices with their OS are connected to scanned networks and even routers and switches. Also, what ports are opened. It gives an opportunity to predict future attacks because open ports increase \textit{attack surface}. Especially, with \textit{attack vectors} the \textit{actor} can find vulnerabilities, then write the malicious code or an \textit{exploit} and run it. It will give the ability for the attacker to take control of the whole system.\cite{SECUREWORKS} Besides that, he can use \textit{malware or ransomware}. For instance, with the \textit{nmap}, the attacker might find out the hosts, open ports, servers, their function and the version of OS. So, the attacker can already know what \textit{malware} he needs to use. It is a pretty practical tool for monitoring the traffic, which is going in and out. I would say \textit{nmap} is a great sniffing tool, which can be used on "dark" side, ethical hacking or usual analysis and monitoring.  
+
+\newpage
+
+\subsection{Metagoofil}
+Another great tool for gathering and collecting public information is Metagoofil that collects \textit{metadata} from the file. With that data, the actor can find enough data about the creator of the file. So, we can retrieve author's name, email, software which has been used, probably MAC address and the printer's information and information about servers, excel and pdf files, Word documents, and Powerpoint documents from the specific resource or domains\cite{SentinelOne}. Known this information, the \textit{actor} can use exploits to crack the software on the system where the file was created, collect necessary information which is useful for the attack or used \textit{social engineering} by using known emails\cite{DNSstuff}. 
+So Metagoofil is a great tool for extracting the data from the files. It can be useful for analysis of collected data because we can know what information the \textit{actor} can gain before launching his attack. It can help to prevent a potential attack.
+
+\newpage
+
+\subsection{Socail media}
+Even the usual social media(without careful control) may cause vulnerability, which is a great help to OSINT. It is difficult to believe but LinkedIn, Indeed, XING, RecruitEm and similar job search websites are part of Cyber Intelligence threat because through them, hackers can gather the public information. All business records about employees are stored on social media platforms and can be the pathway to being hacked. Moreover, social media sites can be used for phishing attacks. The resume is always on open-source access. In the resume, we can find information such as email address, phone number, the previous work and victim's network would it be previous job or university. So it is not hard to use some tool for the collection of those resumes(where have enough data and emails). For example, sophisticated hackers can write a code which can be used as a bot with a searching engine. So all information can be complied with and used for a malicious purpose as sending malware, ransomware through emails or just using social engineering.  
+ 
+\newpage 
+\subsection{Nikto}
+\textit{Nikto} is a well-known web server scanner. Also, it is an incredible tool for penetration testing of vulnerabilities. With nikto the analyst can predict \textit{attack vectors}. Due to \textit{nikto} we can find vulnerabilities that can be used as exploits on scanned websites. Moreover, this tool is not stealthy, so it means that the tool mostly should be used for scanning and detecting of vulnerabilities by the people who are authorized to make those scans. The \textit{adversary} less likely will be using the tool for a reconnaissance. It is really great to for checking ssl, xss vulnerability and etc.\cite{TechBeacon} \\
+\includegraphics[scale = 0.75]{Screenshot (62).png}\break
+
+As can be seen, I used simple command \textbf{nikto -h pbs.org -ssl} for launching vulnerability scanner. In the following command, I scanned the website \textit{pbs.org} and detected which port is opened and the number of code. Also checked for ciphers. The main point was to check the website for ssl protocol vulnerabilities because ssl is one of the most commonly used protocols for providing secure internet communication to users. Also, it is convenient that nikto command provides additional information about SSL such as what exact cipher was used, what multiple IP address the server has. So it is useful tool to discover potentially dangerous files and various problems on servers.
+
+\newpage 
+\subsection{Diagram} \cite{ExpertInsights}
+
+\tikzstyle{deccision} = [diamond, draw, fill=blue!50]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{elli} = [draw, ellipse, fill=red!50, text width = 4em, text centered, minimum height=10mm, node distance=10em]
+\tikzstyle{block} = [draw, rectangle, fill = blue!50, text width=8em, text centered, minimum height=10mm, node distance=10em]
+
+\begin{tikzpicture}
+\node[block] (start) {Company(users)};
+\node[elli, below of=start, xshift=-7em](process1) {Adversary};
+\node[elli, above of=start, yshift= 5em](user) {Breach};
+\node[elli, right of=process1, xshift = 5em](process2) {Bad Privacy policy};
+\node[decision, below of = start, yshift=5 em](decision1){Is the company in danger? How to protect?};
+\node[elli, right of = start, yshift = 10em] (process3) {OSINT};
+\node[elli, left of = start, yshift = 8 em](process4) {Phishing};
+\node[elli, left of = start, yshift = -2 em](process5) {Malware};
+\node[elli, right of = start, yshift = 1 em](process6) {Ransomware};
+\node[elli, below of = start, yshift = 3 em](process7) {Insider Threats};
+\path[line](user)--(start);
+\path[line](process2)--(start);
+\path[line](process1)--(start);
+\path[line](process3)--(start);
+\path[line](process4)--(start);
+\path[line](process5)--(start);
+\path[line](process6)--(start);
+\path[line](process7)--(start);
+\end{tikzpicture}
+
+\newpage
+
+\subsection{Conclusion}
+So according to KSA paradigm, I gained knowledge related to analysis of OSINT tools and their potential usage. As for skills, I have learnt how to scan the computer network and find vulnerabilities, and a research on the topics that are necessary for cyber security intelligence. I have learnt some new statements and commands for \textit{nmap and nikto}. And finally, for abilities now, I can mitigate the cyber threats, at least on basic level. I can organize the minimal risk management, basic penetration testing and prevent future attacks on port scanning on the company network. Also, I have learnt how to secure a private life through social media.   
+Therefore, our goal as a part of cyber threat intelligence, to find the way to mitigate the potential danger. For that cases, we must analyze \textit{attack surface} and make \textit{countermeasure} in advance. It reduces the chances for \textit{actors} to accomplish a \textit{breach attack}. 
+
+
+
+
+\newpage
+
+\bibliographystyle{unsrt}
+\bibliography{MoiseevG}
+
+
+\end{document}
